@@ -159,9 +159,13 @@ function render(modelArray) {
   const div_loader = document.getElementById('loader');
   const go_to_top = document.getElementById('go-to-top');
   const loading_message = document.getElementById('squiggly-loading-message');
+  const a_top_ten_studyplaces = document.getElementById('top-ten-studyspaces');
+  const a_all_studyplaces = document.getElementById('all-studyspaces');
 
   p_top_ten.style.visibility = 'visible';
   p_all_buildings.style.visibility = 'visible';
+  a_top_ten_studyplaces.style.visibility = 'visible';
+  a_all_studyplaces.style.visibility = 'visible';
 
 
   // const ul_list = document.getElementById('buildings-list');
