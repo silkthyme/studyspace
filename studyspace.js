@@ -200,7 +200,7 @@ function render(modelArray) {
             <h5 class="header">${currentBuilding.name}</h5>
             <div style="text-align: left" class="description">
               There are ${currentBuilding[number_of_devices_key]} devices connected to the Wifi in ${currentBuilding.name}
-              . Maximum number of WiFi devices connected in the last week: ${currentBuilding[max_number_of_devices_key]}
+              . Maximum number of WiFi devices connected in the last week: ${Math.round(currentBuilding[max_number_of_devices_key])}. 
             </div>
             <div class="description">
               <span style="font-size: 15px; padding: 0px; line-height: 80%; opacity: 80%" class="date">Estimated Occupancy: ${ratio_string}</span>
