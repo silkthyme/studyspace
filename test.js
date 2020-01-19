@@ -156,6 +156,10 @@ const wifi_promise = fetch(wifi_buildings)
     Promise.all(buildingPromises).then(() => {
       Promise.all(wifiOccupantPromises).then(() => {
         Promise.all(interpolatedPromises).then(() => {
+          let modelArray = Object.values(model);
+
+          modelArray = modelArray.sort(compareBuildings);
+          console.log(modelArray);
           render();
         })
       })
@@ -198,4 +202,25 @@ function newBuildingLi(building) {
   // li_item.append(header);
   // li_item.append(paragraph);
   return div_building;
+}
+
+function compareBuildings(buildingA, buildingB) {
+  const ratioA = buildingA[ratio_key];
+  const ratioB = buildingB[ratio_key];
+  const maxA = buildingA[max_number_of_devices_key];
+  const maxB = buildingB[max_number_of_devices_key];
+
+  if (ratioA < ratioB) {
+    return -1;
+  } else if (ratioA > ratioB) {
+    return 1;
+  } else {
+    if (maxA < maxB) {
+      return 1;
+    } else if (maxB < maxA) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
 }
