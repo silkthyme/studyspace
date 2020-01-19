@@ -164,32 +164,34 @@ function render(modelArray) {
   // const img = document.createElement('img');
   // img.src = 'https://localwiki.org/media/cache/8c/9a/8c9aff9e9e3f770d570c0302a52fb831.jpg';
 
-  const firstBuilding = modelArray[0];
+  let currentBuilding; 
+  for (i = 0; i < 10; i++) {
+    currentBuilding = modelArray[i];
 
-  const card_html = `
-  <div class="ui card">
-  <div class="image">
-    <img src="https://localwiki.org/media/cache/8c/9a/8c9aff9e9e3f770d570c0302a52fb831.jpg">
-  </div>
-  <div class="content">
-    <a class="header">${firstBuilding.name}</a>
-    <div class="meta">
-      <span class="date">Ratio of current number of connected devices to maximum in the past week: ${firstBuilding [ratio_key]}</span>
+    const card_html = `
+    <div class="ui card">
+    <div class="image">
+      <img src="https://localwiki.org/media/cache/8c/9a/8c9aff9e9e3f770d570c0302a52fb831.jpg">
     </div>
-    <div class="description">
-There are ${firstBuilding[number_of_devices_key]} devices connected to the Wifi in ${firstBuilding.name}
-Maximum number of WiFi devices connected in the last week: ${firstBuilding[max_number_of_devices_key]}
-  <div class="extra content">
-    <a>
-      <i class="user icon"></i>
-    </a>
-  </div>
-  </div>
-  `;
-
-  const first_li = document.createElement('li');
-  first_li.innerHTML = card_html;
-  ul_cards.append(first_li);
+    <div class="content">
+      <a class="header">${currentBuilding.name}</a>
+      <div class="meta">
+        <span class="date">Ratio of current number of connected devices to maximum in the past week: ${currentBuilding[ratio_key]}</span>
+      </div>
+      <div class="description">
+  There are ${currentBuilding[number_of_devices_key]} devices connected to the Wifi in ${currentBuilding.name}
+  Maximum number of WiFi devices connected in the last week: ${currentBuilding[max_number_of_devices_key]}
+    <div class="extra content">
+      <a>
+        <i class="user icon"></i>
+      </a>
+    </div>
+    </div>
+    `;
+    const first_li = document.createElement('li');
+    first_li.innerHTML = card_html;
+    ul_cards.append(first_li);
+  }
 }
 
 
