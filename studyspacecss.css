@@ -18,7 +18,7 @@ h1{
 
 #header img{
 	position:relative;
-    -webkit-animation-duration: 20s;
+    -webkit-animation-duration: 40s;
      animation-name: transition;
     
 }
@@ -27,14 +27,15 @@ h1{
 @-webkit-keyframes transition {
 
     0%   {bottom: 600px; top: -500px;}
-    30% { bottom: -600px; top: 0px;}
+    20% { bottom: -600px; top: 0px;}
+    30% { bottom: -600px; top: -50px;}
     40%  {bottom: -600px; top:-100px;}
-    60%  { bottom: -600px; top: 0px;}
-    75%  {bottom: -600px; top:-40px;}
+    45%  { bottom: -600px; top: 0px;}
+    50%  {bottom: -600px; top:-40px;}
+    60%  {bottom: 0px; top:0px;}
+    70%  {bottom: -600px; top:-40px;}
     80%  {bottom: 0px; top:0px;}
-    85%  {bottom: -600px; top:-20px;}
-    90%  {bottom: 0px; top:0px;}
-    95%  {bottom: -600px; top:-10px;}
+    90%  {bottom: -600px; top:-20px;}
     100% {left: 0px; top: 0px;}
   }
 
