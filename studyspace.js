@@ -185,11 +185,11 @@ function render(modelArray) {
     currentBuilding = modelArray[i];
 
     const card_html = `
-    <div class="ui card">
-    <div class="image">
+    <div style="width: 500px" class="ui card">
+    <div style="width: 500px" class="image">
       <img src="${building_images[currentBuilding.name] || fallback_image}">
     </div>
-    <div class="content">
+    <div style="width: 500px" class="content">
       <a class="header">${currentBuilding.name}</a>
       <div class="description">
   There are ${currentBuilding[number_of_devices_key]} devices connected to the Wifi in ${currentBuilding.name}
@@ -209,11 +209,11 @@ function render(modelArray) {
 
 
     const card_html2 = `
-    <div class="ui card">
-    <div class="image">
+    <div style="width: 500px" class ="ui card">
+    <div style="width: 500px" class="image">
       <img src="${building_images[currentBuilding.name] || fallback_image}">
     </div>
-    <div class="content">
+    <div style="width: 500px" class="content">
       <a class="header">${currentBuilding.name}</a>
       <div class="description">
   There are ${currentBuilding[number_of_devices_key]} devices connected to the Wifi in ${currentBuilding.name}
