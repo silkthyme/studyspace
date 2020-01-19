@@ -1,0 +1,50 @@
+body{
+	background-color: #f7f7f7;
+}
+
+
+h1{
+	color: white;
+
+	
+
+}
+
+a:link, a:visited {
+	color:white;
+	background-color:#96C3C3;
+	padding:15px 25px;
+	text-decoration: none;
+	text-align: center;
+	display:inline-block;
+}
+
+a:hover, a:active {
+	background-color:white;
+	color: #96C3C3;
+}
+
+#header{
+	background-color:#96C3C3;
+	padding: 1px;	
+	
+}
+
+#nav {
+	padding-top: 10px;
+	font-size:25px;
+	margin-left: 60px;
+}
+
+#address{
+	padding-top:120px;
+	font-size:55px;
+	padding-left: 120px;
+}
+
+#delete{
+	
+	font-size:55px;
+	padding-left: 120px;
+}
+
