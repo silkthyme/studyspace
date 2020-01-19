@@ -138,7 +138,7 @@ const wifi_promise = fetch(wifi_buildings)
                     const maxValue = Math.max(...interpolated_array);
                     
                     model[buildingObject.name][max_number_of_devices_key] = maxValue;
-                    model[buildingObject.name][ratio_key] = buildingObject.number_of_devices_key / maxValue;
+                    model[buildingObject.name][ratio_key] = buildingObject[number_of_devices_key] / maxValue;
 
                     console.log('max of ' + nameOfBuilding + ' is ' + maxValue);
                     console.log('___________________________________');
