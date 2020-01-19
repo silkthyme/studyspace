@@ -13,7 +13,7 @@ h1{
 
 #header img{
 	position:relative;
-    -webkit-animation-duration: 40s;
+    -webkit-animation-duration: 20s;
      animation-name: transition;
     
 }
@@ -23,7 +23,6 @@ h1{
 
     0%   {bottom: 600px; top: -500px;}
     20% { bottom: -600px; top: 0px;}
-    30% { bottom: -600px; top: -50px;}
     40%  {bottom: -600px; top:-100px;}
     45%  { bottom: -600px; top: 0px;}
     50%  {bottom: -600px; top:-40px;}
@@ -68,7 +67,7 @@ a:hover, a:active {
 
 #nowwhat{
 	
-	font-size:30px;
+	font-size:23px;
 	
 }
 

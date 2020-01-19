@@ -175,18 +175,13 @@ function render(modelArray) {
     </div>
     <div class="content">
       <a class="header">${currentBuilding.name}</a>
-      <div class="meta">
-        <span class="date">Ratio of current number of connected devices to maximum in the past week: ${currentBuilding[ratio_key]}</span>
-      </div>
       <div class="description">
   There are ${currentBuilding[number_of_devices_key]} devices connected to the Wifi in ${currentBuilding.name}
-  Maximum number of WiFi devices connected in the last week: ${currentBuilding[max_number_of_devices_key]}
-    <div class="extra content">
-      <a>
-        <i class="user icon"></i>
-      </a>
+  . Maximum number of WiFi devices connected in the last week: ${currentBuilding[max_number_of_devices_key]}
     </div>
-    </div>
+    <div class="meta">
+    <span style="font-size: 15px; padding: 0px; line-height: 80%" class="date">Ratio of current number of connected devices to maximum in the past week: ${currentBuilding[ratio_key]}</span>
+  </div>
     `;
     const first_li = document.createElement('li');
     first_li.innerHTML = card_html;
