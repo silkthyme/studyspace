@@ -26,56 +26,44 @@ fetch(buildings)
   .then((items) => {
     var numbuildings = items['Items'].length;
     document.getElementById('numbuildings').innerHTML = numbuildings;
-    // REPLACE 5 WITH NUMBUILDINGS LATER
-    for (i = 0; i < numbuildings; i++) {
-      //TODO: change the 0 to i later!!!!!
+    for (i = 0; i < numbuildings; i++) { // CHANGE THIS TO NUMBUILDINGS LATER
       var attributelink = items['Items'][i]['Links']['Elements'];
       fetch(attributelink)
         .then((response) => {
           return response.json();
         })
         .then((items) => {
-          // console.log(items);
-          // let chilledwater = items['Items'][0]['Name'];
-          // let domesticwater = items['Items'][1]['Name'];
-          // console.log(items);
+          console.log(items);
+          let attributename = '';
           let name = '';
           let value = '';
           let units = '';
           for (j = 0; j < items['Items'].length; j++) {
             let attribute = items['Items'][j]['Links']['Value'];
+            // attributename is one of Chilled Water, Domestic Water, Electricity, Gas, or Steam
+            attributename = items['Items'][j]['Name'];
+            console.log(attributename);
+            if (attributename !== 'Electricity') {
+              continue;
+            }
+            // attribute is each attribute inside Chilled Water, Domestic Water, Electricity, Gas or Steam
             fetch(attribute)
               .then((response) => {
                 return response.json();
               })
               .then((items) => {
-                // console.log(items);
-                name = items['Items'][0]['Name'];
-                // console.log(name);
-                if (items['Items'][0]['Value']['Value'] != null) {
-                  value = items['Items'][0]['Value']['Value'];
-                  // console.log('value -> ' + value);
-                } else {
-                  value = 'undefined';
+                for (k = 0; k < items['Items'].length; k++) {
+                  name = items['Items'][k]['Name'];
+                  if (items['Items'][k]['Value']['Value'] != null) {
+                    value = items['Items'][k]['Value']['Value'];
+                  } else {
+                    value = 'undefined';
+                  }
+                    units = items['Items'][k]['Value']['UnitsAbbreviation'];
+                    console.log(name + ': ' + value + ' ' + units);
                 }
-                // if (items['Items'][0]['Value']['UnitsAbbreviation'] != '') {
-                  units = items['Items'][0]['Value']['UnitsAbbreviation'];
-                  console.log(name + ': ' + value + ' ' + units);
-                // }
               })
           }
-          // let electricity = items['Items'][2]['Links']['Value'];
-          // // let gas = items['Items'][3]['Name'];
-          // // let steam = items['Items'][4]['Name'];
-          // fetch(electricity)
-          //   .then((response) => {
-          //     return response.json();
-          //   })
-          //   .then((items) => {
-          //     // monthly usage electricity
-          //     let value = items['Items'][2]['Value']['Value']['Value'];
-          //     console.log(value);
-          //   })
         })
     }
   });
