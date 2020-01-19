@@ -1,78 +1,253 @@
+ACAD
+There are 40 devices connected to the Wifi in ACAD
 
+AOB4
+There are 7 devices connected to the Wifi in AOB4
 
-body{
-	background-color: #f7f7f7;
-	font-family: 'Dosis', sans-serif;
-}
+ARC
+There are 9 devices connected to the Wifi in ARC
 
+ASMUN
+There are 1 devices connected to the Wifi in ASMUN
 
-h1{
-	color: white;
+BJ1
+There are 1 devices connected to the Wifi in BJ1
 
-}
+BRIG
+There are 22 devices connected to the Wifi in BRIG
 
-#header img:hover {
-    box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 1), 0 6px 16px 0 rgba(0, 0, 0, 1);
-   
-}
+BWFP
+There are 0 devices connected to the Wifi in BWFP
 
-#header img{
-	position:relative;
-    -webkit-animation-duration: 40s;
-     animation-name: transition;
-    
-}
+CHEM
+There are 15 devices connected to the Wifi in CHEM
 
+CHEMX
+There are 21 devices connected to the Wifi in CHEMX
 
-@-webkit-keyframes transition {
+COLEB
+There are 0 devices connected to the Wifi in COLEB
 
-    0%   {bottom: 600px; top: -500px;}
-    20% { bottom: -600px; top: 0px;}
-    30% { bottom: -600px; top: -50px;}
-    40%  {bottom: -600px; top:-100px;}
-    45%  { bottom: -600px; top: 0px;}
-    50%  {bottom: -600px; top:-40px;}
-    60%  {bottom: 0px; top:0px;}
-    70%  {bottom: -600px; top:-40px;}
-    80%  {bottom: 0px; top:0px;}
-    90%  {bottom: -600px; top:-20px;}
-    100% {left: 0px; top: 0px;}
-  }
+CONT
+There are 0 devices connected to the Wifi in CONT
 
+COWL
+There are 6 devices connected to the Wifi in COWL
 
-a:link, a:visited {
-	color:white;
-	background-color:#8AD5F0;
-	padding:15px 25px;
-	text-decoration: none;
-	text-align: center;
-	display:inline-block;
-}
+CRUS
+There are 12 devices connected to the Wifi in CRUS
 
-a:hover, a:active {
-	background-color:white;
-	color: #F5BBAE;
-}
+DH
+There are 8 devices connected to the Wifi in DH
 
-#header{
-	background-color:#8AD5F0;
-	padding: 1px;	
-	
-}
+DRAMA
+There are 4 devices connected to the Wifi in DRAMA
 
-#nav {
-	font-size:25px;
-}
+EPS
+There are 0 devices connected to the Wifi in EPS
 
-#wherenow{
-	padding-top:10px;
-	font-size:25px;
-	padding-left: 35%;
-}
+EU2
+There are 38 devices connected to the Wifi in EU2
 
-#nowwhat{
-	
-	font-size:35px;
-	
-}
+FOOD
+There are 1 devices connected to the Wifi in FOOD
 
+FOODSCI
+There are 1 devices connected to the Wifi in FOODSCI
+
+FPS
+There are 0 devices connected to the Wifi in FPS
+
+GBSF
+There are 63 devices connected to the Wifi in GBSF
+
+GHA_ICS
+There are 17 devices connected to the Wifi in GHA_ICS
+
+GIEDT
+There are 0 devices connected to the Wifi in GIEDT
+
+HART
+There are 19 devices connected to the Wifi in HART
+
+HR
+There are 0 devices connected to the Wifi in HR
+
+HUNT
+There are 4 devices connected to the Wifi in HUNT
+
+HUTCH
+There are 11 devices connected to the Wifi in HUTCH
+
+HWC
+There are 24 devices connected to the Wifi in HWC
+
+JUNGER
+There are 0 devices connected to the Wifi in JUNGER
+
+KERR
+There are 12 devices connected to the Wifi in KERR
+
+KING
+There are 5 devices connected to the Wifi in KING
+
+KLEIBER
+There are 0 devices connected to the Wifi in KLEIBER
+
+LFH
+There are 4 devices connected to the Wifi in LFH
+
+LSA
+There are 11 devices connected to the Wifi in LSA
+
+MADDY
+There are 0 devices connected to the Wifi in MADDY
+
+MANN
+There are 1 devices connected to the Wifi in MANN
+
+MATH
+There are 5 devices connected to the Wifi in MATH
+
+MEYR
+There are 23 devices connected to the Wifi in MEYR
+
+MIWF
+There are 8 devices connected to the Wifi in MIWF
+
+MRAK
+There are 18 devices connected to the Wifi in MRAK
+
+MSB
+There are 0 devices connected to the Wifi in MSB
+
+MSC
+There are 0 devices connected to the Wifi in MSC
+
+MU
+There are 24 devices connected to the Wifi in MU
+
+MUBS
+There are 24 devices connected to the Wifi in MUBS
+
+MUSIC
+There are 2 devices connected to the Wifi in MUSIC
+
+OLS
+There are 2 devices connected to the Wifi in OLS
+
+PES
+There are 8 devices connected to the Wifi in PES
+
+PH_GEO
+There are 20 devices connected to the Wifi in PH_GEO
+
+PHSL
+There are 0 devices connected to the Wifi in PHSL
+
+PRB
+There are 3 devices connected to the Wifi in PRB
+
+RECH
+There are 0 devices connected to the Wifi in RECH
+
+REGN
+There are 0 devices connected to the Wifi in REGN
+
+ROBN
+There are 7 devices connected to the Wifi in ROBN
+
+ROBS
+There are 7 devices connected to the Wifi in ROBS
+
+ROES
+There are 0 devices connected to the Wifi in ROES
+
+SCC
+There are 7 devices connected to the Wifi in SCC
+
+SCHM
+There are 0 devices connected to the Wifi in SCHM
+
+SEGU
+There are 0 devices connected to the Wifi in SEGU
+
+SHIELDS
+There are 9 devices connected to the Wifi in SHIELDS
+
+SLAB
+There are 11 devices connected to the Wifi in SLAB
+
+SLEC
+There are 0 devices connected to the Wifi in SLEC
+
+SMOA
+There are 9 devices connected to the Wifi in SMOA
+
+SOCS
+There are 31 devices connected to the Wifi in SOCS
+
+SPRL
+There are 7 devices connected to the Wifi in SPRL
+
+SSC
+There are 5 devices connected to the Wifi in SSC
+
+STOR
+There are 2 devices connected to the Wifi in STOR
+
+STORER
+There are 2 devices connected to the Wifi in STORER
+
+SUR3
+There are 6 devices connected to the Wifi in SUR3
+
+TAPS
+There are 9 devices connected to the Wifi in TAPS
+
+TER1
+There are 0 devices connected to the Wifi in TER1
+
+TER2
+There are 0 devices connected to the Wifi in TER2
+
+TERC
+There are 0 devices connected to the Wifi in TERC
+
+THUR
+There are 1 devices connected to the Wifi in THUR
+
+TUPP
+There are 58 devices connected to the Wifi in TUPP
+
+VM2
+There are 13 devices connected to the Wifi in VM2
+
+VM3A
+There are 7 devices connected to the Wifi in VM3A
+
+VM3B
+There are 24 devices connected to the Wifi in VM3B
+
+VMEP
+There are 1 devices connected to the Wifi in VMEP
+
+VMIF
+There are 1 devices connected to the Wifi in VMIF
+
+VMLF
+There are 1 devices connected to the Wifi in VMLF
+
+VMTH
+There are 1 devices connected to the Wifi in VMTH
+
+WELL
+There are 1 devices connected to the Wifi in WELL
+
+WICK
+There are 15 devices connected to the Wifi in WICK
+
+WSRC
+There are 0 devices connected to the Wifi in WSRC
+
+YOUNG
