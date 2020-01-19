@@ -1,4 +1,4 @@
-# Studyspace
+# https://silkthyme.github.io/studyspace/studyspace.html
 ![Squiggly the Squid](https://github.com/silkthyme/studyspace/master/krakenkid.png)
 
 #### Let Squiggly the Squid help determine the best study spot on campus! 
