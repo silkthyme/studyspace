@@ -191,7 +191,7 @@ function render(modelArray) {
       <img src="${building_images[currentBuilding.name] || fallback_image}">
     </div>
     <div style="width: 500px" class="content">
-      <a class="header">${currentBuilding.name}</a>
+      <h5 class="header">${currentBuilding.name}</h5>
       <div class="description">
   There are ${currentBuilding[number_of_devices_key]} devices connected to the Wifi in ${currentBuilding.name}
   . Maximum number of WiFi devices connected in the last week: ${currentBuilding[max_number_of_devices_key]}

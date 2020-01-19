@@ -17,7 +17,6 @@ h1{
 	position:relative;
     -webkit-animation-duration: 20s;
      animation-name: transition;
-    
 }
 
 
@@ -136,6 +135,7 @@ a:hover, a:active {
 
 #go-to-top {
     background-color: #ede8e4;
+    clip: auto;
 }
 
 a:hover#go-to-top {
@@ -149,4 +149,8 @@ a:hover#go-to-top {
 a:hover#title-anchor {
     color: #711919;
     background-color: #ede8e4;
+}
+
+li {
+    margin: 20px;
 }
