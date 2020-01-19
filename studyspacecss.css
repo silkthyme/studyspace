@@ -9,9 +9,14 @@ h1{
 
 }
 
-img{
+#header img:hover {
+    box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 1), 0 6px 16px 0 rgba(0, 0, 0, 1);
+   
+}
+
+#header img{
 	position:relative;
-    -webkit-animation-duration: 4s;
+    -webkit-animation-duration: 14s;
      animation-name: transition;
     
 }
@@ -20,9 +25,9 @@ img{
 @-webkit-keyframes transition {
 
     0%   {bottom: 600px; top: -500px;}
-    40%  { bottom: -600px; top: 0px;}
-    55%  {bottom: -600px; top:-100px;}
-    70%  { bottom: -600px; top: 0px;}
+    30% { bottom: -600px; top: 0px;}
+    40%  {bottom: -600px; top:-100px;}
+    60%  { bottom: -600px; top: 0px;}
     75%  {bottom: -600px; top:-40px;}
     80%  {bottom: 0px; top:0px;}
     85%  {bottom: -600px; top:-20px;}
@@ -52,9 +57,7 @@ a:hover, a:active {
 }
 
 #nav {
-	padding-top: 10px;
 	font-size:25px;
-	margin-left: 60px;
 }
 
 #wherenow{
