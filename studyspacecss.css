@@ -23,8 +23,8 @@ h1{
 
     0%   {bottom: 600px; top: -500px;}
     20% { bottom: -600px; top: 0px;}
-    40%  {bottom: -600px; top:-100px;}
-    45%  { bottom: -600px; top: 0px;}
+    30%  {bottom: -600px; top:-100px;}
+    40%  { bottom: -600px; top: 0px;}
     50%  {bottom: -600px; top:-40px;}
     60%  {bottom: 0px; top:0px;}
     70%  {bottom: -600px; top:-40px;}

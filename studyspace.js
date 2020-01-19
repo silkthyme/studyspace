@@ -156,6 +156,7 @@ function render(modelArray) {
   // console.log(model);
 
   const ul_cards = document.getElementById('card-list');
+  const other_cards = document.getElementById('other-list');
 
   // const div_container = document.createElement('');
 
@@ -187,33 +188,33 @@ function render(modelArray) {
     first_li.innerHTML = card_html;
     ul_cards.append(first_li);
   }
+
+  for (j = 10; j < modelArray.length; j++) {
+    currentBuilding = modelArray[j];
+
+    const card_html2 = `
+    <div class="ui card">
+    <div class="image">
+      <img src="https://localwiki.org/media/cache/8c/9a/8c9aff9e9e3f770d570c0302a52fb831.jpg">
+    </div>
+    <div class="content">
+      <a class="header">${currentBuilding.name}</a>
+      <div class="description">
+  There are ${currentBuilding[number_of_devices_key]} devices connected to the Wifi in ${currentBuilding.name}
+  . Maximum number of WiFi devices connected in the last week: ${currentBuilding[max_number_of_devices_key]}
+    </div>
+    <div class="meta">
+    <span style="font-size: 15px; padding: 0px; line-height: 80%" class="date">Ratio of current number of connected devices to maximum in the past week: ${currentBuilding[ratio_key]}</span>
+  </div>
+    `;
+    const first_li2 = document.createElement('li');
+    first_li2.innerHTML = card_html2;
+    other_cards.append(first_li2);
+  }
+
 }
 
-
-// <!-- <div class="ui card">
-/*
-{ <div class="image">
-  <img src="https://semantic-ui.com/images/avatar2/large/kristy.png">
-</div>
-<div class="content">
-  <a class="header">Arc</a>
-  <div class="meta">
-  <span class="date">Joined in 2013</span>
-  </div>
-  <div class="description">
-  Kristy is an art director living in New York.
-  </div>
-</div>
-<div class="extra content">
-  <a>
-  <i class="user icon"></i>
-  22 Friends
-  </a>
-</div>
-</div> */
-
 function newBuildingLi(building) {
-  // const li_item = document.createElement('li');
   const header = document.createElement('h3');
   header.innerText = building['name'];
 
@@ -235,10 +236,6 @@ function newBuildingLi(building) {
 
   div_building.append(header);
   div_building.append(sub_ul);
-  // const paragraph = document.createElement('p');
-  // paragraph.innerText = `There are ${building[number_of_devices_key]} devices connected to the Wifi in ${building.name}`;
-  // li_item.append(header);
-  // li_item.append(paragraph);
   return div_building;
 }
 
