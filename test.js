@@ -25,40 +25,57 @@ fetch(buildings)
   })
   .then((items) => {
     var numbuildings = items['Items'].length;
-    // console.log('There are ' + items['Items'].length + ' buildings with data.');
     document.getElementById('numbuildings').innerHTML = numbuildings;
+    // REPLACE 5 WITH NUMBUILDINGS LATER
     for (i = 0; i < numbuildings; i++) {
       //TODO: change the 0 to i later!!!!!
-      var attributelink = items['Items'][0]['Links']['Elements'];
+      var attributelink = items['Items'][i]['Links']['Elements'];
       fetch(attributelink)
         .then((response) => {
           return response.json();
         })
         .then((items) => {
-          console.log(items);
+          // console.log(items);
           // let chilledwater = items['Items'][0]['Name'];
           // let domesticwater = items['Items'][1]['Name'];
-          let electricity = items['Items'][2]['Links']['Value'];
-          // let gas = items['Items'][3]['Name'];
-          // let steam = items['Items'][4]['Name'];
-          fetch(electricity)
-            .then((response) => {
-              return response.json();
-            })
-            .then((items) => {
-              let value = items['Items'][2]['Value'];
-              console.log(value);
-              // let timestamp
-            })
+          // console.log(items);
+          let name = '';
+          let value = '';
+          let units = '';
+          for (j = 0; j < items['Items'].length; j++) {
+            let attribute = items['Items'][j]['Links']['Value'];
+            fetch(attribute)
+              .then((response) => {
+                return response.json();
+              })
+              .then((items) => {
+                // console.log(items);
+                name = items['Items'][0]['Name'];
+                // console.log(name);
+                if (items['Items'][0]['Value']['Value'] != null) {
+                  value = items['Items'][0]['Value']['Value'];
+                  // console.log('value -> ' + value);
+                } else {
+                  value = 'undefined';
+                }
+                // if (items['Items'][0]['Value']['UnitsAbbreviation'] != '') {
+                  units = items['Items'][0]['Value']['UnitsAbbreviation'];
+                  console.log(name + ': ' + value + ' ' + units);
+                // }
+              })
+          }
+          // let electricity = items['Items'][2]['Links']['Value'];
+          // // let gas = items['Items'][3]['Name'];
+          // // let steam = items['Items'][4]['Name'];
+          // fetch(electricity)
+          //   .then((response) => {
+          //     return response.json();
+          //   })
+          //   .then((items) => {
+          //     // monthly usage electricity
+          //     let value = items['Items'][2]['Value']['Value']['Value'];
+          //     console.log(value);
+          //   })
         })
-      // console.log(elements);
-      // $.getJSON('a/ttributelink', function(buildingdata) {
-        // let items = buildingdata['Items'];
-      // });
-      // console.log(items);
-      // console.log(elements['Items']);
-      // for (i = 0; i < elements['Items'].length; i++) {
-      //   console.log('>>>>>' + elements['Items'][i]['Name']);
-      // }
     }
   });
