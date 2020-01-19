@@ -34,7 +34,7 @@ h1{
   }
 
 
-a:link, a:visited {
+.anchors a:link, a:visited {
 	color:white;
 	background-color:#10161c;
 	padding:5px 5px;
@@ -44,7 +44,7 @@ a:link, a:visited {
 	border-radius: 20%;
 	width: 20%;
 }
-a:hover, a:active {
+.achors a:hover, a:active {
 	background-color: #ede8e4;
 	color: #711919;
 }
@@ -69,6 +69,16 @@ a:hover, a:active {
 	
 	font-size:23px;
 	
+}
+
+.logobottom a{
+    width: 100px;
+    height: 100px;
+}
+
+.logobottom img{
+    height: 100px;
+    width: 100px;
 }
 
 .load-wrapp {
