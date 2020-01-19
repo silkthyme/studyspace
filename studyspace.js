@@ -187,21 +187,22 @@ function render(modelArray) {
   // img.src = 'https://localwiki.org/media/cache/8c/9a/8c9aff9e9e3f770d570c0302a52fb831.jpg';
 
   function getCardHtml(currentBuilding) {
+    const ratio_string = isNaN(currentBuilding[ratio_key]) ? 'There is no data for this building' : `${parseFloat(currentBuilding[ratio_key]).toFixed(2) * 100}%`;
     return `
-    <div style="width: 500px" class="ui card">
-    <div style="width: 500px" class="image">
-      <img src="${building_images[currentBuilding.name] || fallback_image}">
+      <div style = "width: 500px" class="ui card">
+        <div style="width: 500px" class="image">
+          <img src="${building_images[currentBuilding.name] || fallback_image}">
     </div>
-    <div style="width: 500px" class="content">
-      <h5 class="header">${currentBuilding.name}</h5>
-      <div class="description">
-  There are ${currentBuilding[number_of_devices_key]} devices connected to the Wifi in ${currentBuilding.name}
-  . Maximum number of WiFi devices connected in the last week: ${currentBuilding[max_number_of_devices_key]}
-    </div>
-    <div class="meta">
-    <span style="font-size: 15px; padding: 0px; line-height: 80%" class="date">Estimated Occupancy: ${parseFloat(currentBuilding[ratio_key]).toFixed(2) * 100}%</span>
-  </div>
-    `;
+          <div style="width: 500px" class="content">
+            <h5 class="header">${currentBuilding.name}</h5>
+            <div class="description">
+              There are ${currentBuilding[number_of_devices_key]} devices connected to the Wifi in ${currentBuilding.name}
+              . Maximum number of WiFi devices connected in the last week: ${currentBuilding[max_number_of_devices_key]}
+            </div>
+            <div class="meta">
+              <span style="font-size: 15px; padding: 0px; line-height: 80%" class="date">Estimated Occupancy: ${ratio_string}</span>
+            </div>
+            `;
   }
 
   let currentBuilding;
@@ -259,6 +260,18 @@ function compareBuildings(buildingA, buildingB) {
   const ratioB = buildingB[ratio_key];
   const maxA = buildingA[max_number_of_devices_key];
   const maxB = buildingB[max_number_of_devices_key];
+
+  if (isNaN(ratioA) && isNaN(ratioB)) {
+    return 0;
+  }
+
+  if (isNaN(ratioA)) {
+    return 1;
+  }
+
+  if (isNaN(ratioB)) {
+    return -1;
+  }
 
   if (ratioA < ratioB) {
     return -1;
