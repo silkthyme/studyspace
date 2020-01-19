@@ -180,11 +180,8 @@ function render(modelArray) {
   // const img = document.createElement('img');
   // img.src = 'https://localwiki.org/media/cache/8c/9a/8c9aff9e9e3f770d570c0302a52fb831.jpg';
 
-  let currentBuilding;
-  for (i = 0; i < 10; i++) {
-    currentBuilding = modelArray[i];
-
-    const card_html = `
+  function getCardHtml(currentBuilding) {
+    return `
     <div style="width: 500px" class="ui card">
     <div style="width: 500px" class="image">
       <img src="${building_images[currentBuilding.name] || fallback_image}">
@@ -196,9 +193,16 @@ function render(modelArray) {
   . Maximum number of WiFi devices connected in the last week: ${currentBuilding[max_number_of_devices_key]}
     </div>
     <div class="meta">
-    <span style="font-size: 15px; padding: 0px; line-height: 80%" class="date">Ratio of current number of connected devices to maximum in the past week: ${currentBuilding[ratio_key]}</span>
+    <span style="font-size: 15px; padding: 0px; line-height: 80%" class="date">Estimated Occupancy: ${parseFloat(currentBuilding[ratio_key]).toFixed(2) * 100}%</span>
   </div>
     `;
+  }
+
+  let currentBuilding;
+  for (i = 0; i < 10; i++) {
+    currentBuilding = modelArray[i];
+
+    const card_html = getCardHtml(currentBuilding);
     const first_li = document.createElement('li');
     first_li.innerHTML = card_html;
     ul_cards.append(first_li);
@@ -208,21 +212,7 @@ function render(modelArray) {
     currentBuilding = modelArray[j];
 
 
-    const card_html2 = `
-    <div style="width: 500px" class ="ui card">
-    <div style="width: 500px" class="image">
-      <img src="${building_images[currentBuilding.name] || fallback_image}">
-    </div>
-    <div style="width: 500px" class="content">
-      <a class="header">${currentBuilding.name}</a>
-      <div class="description">
-  There are ${currentBuilding[number_of_devices_key]} devices connected to the Wifi in ${currentBuilding.name}
-  . Maximum number of WiFi devices connected in the last week: ${currentBuilding[max_number_of_devices_key]}
-    </div>
-    <div class="meta">
-    <span style="font-size: 15px; padding: 0px; line-height: 80%" class="date">Ratio of current number of connected devices to maximum in the past week: ${currentBuilding[ratio_key]}</span>
-  </div>
-    `;
+    const card_html2 = getCardHtml(currentBuilding);
     const first_li2 = document.createElement('li');
     first_li2.innerHTML = card_html2;
     other_cards.append(first_li2);
