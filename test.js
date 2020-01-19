@@ -93,10 +93,8 @@ const wifi_promise = fetch(wifi_buildings)
       }
 
       model[nameOfBuilding] = buildingObject;
-      // model[buildingObject.name][number_of_devices_key] = "delete me later1";
       const buildingPromise = fetch(items['Items'][i]['Links']['Attributes'])
         .then((response) => {
-          // model[buildingObject.name][number_of_devices_key] = "delete me later2";
           return response.json();
         })
         .then((items) => {
@@ -106,7 +104,6 @@ const wifi_promise = fetch(wifi_buildings)
             if (object['Name'] === 'WIFI Occupants') {
               const wifiOccupantPromise = fetch(object['Links']['Value'])
                 .then((response) => {
-                  // model[buildingObject.name][number_of_devices_key] = 'before the first return';
                   return response.json();
                 })
                 .then((wifi_object) => {
@@ -115,10 +112,6 @@ const wifi_promise = fetch(wifi_buildings)
                   console.log('index: ' + j + ' -> ' + wifi_object['Value']);
                   wifi_data += 'index: ' + promise_count + '. Number of devices connected in this building: ' + wifi_object['Value'] + '<br>';
                   model[buildingObject.name][number_of_devices_key] = wifi_object['Value'];
-                  // const number_of_devices = wifi_object['Value'];
-                  // buildingObject[number_of_devices_key] = number_of_devices;
-                  // model[buildingObject.name] = buildingObject;
-                  // console.log('>>>>>>' + model[buildingObject.name][number_of_devices_key]);
                 });
               wifiOccupantPromises.push(wifiOccupantPromise);
               break;
@@ -126,9 +119,6 @@ const wifi_promise = fetch(wifi_buildings)
               continue;
             }
           }
-          // Promise.all(wifiOccupantPromises).then(() => {
-          //   document.getElementById('wifi_data').innerHTML = wifi_data;
-          // });
         });
       buildingPromises.push(buildingPromise);
     }
@@ -137,15 +127,9 @@ const wifi_promise = fetch(wifi_buildings)
         console.log(model);
         console.log('see above');
         render();
-        // console.log('after render');
-        // console.log(model);
       })
     });
-    // console.log(`Promises length = ${promises.length}`);
   });
-// .then(() => {
-// });
-
 
 function render() {
   console.log(model);
@@ -165,10 +149,8 @@ function newBuildingLi(building) {
   const header = document.createElement('h3');
   header.innerText = building['name'];
   const paragraph = document.createElement('p');
-  paragraph.innerText = `There are ${building[number_of_devices_key]} devices conne cted to the Wifi in ${building.name}`;
+  paragraph.innerText = `There are ${building[number_of_devices_key]} devices connected to the Wifi in ${building.name}`;
   li_item.append(header);
   li_item.append(paragraph);
   return li_item;
 }
-
-  // Promise.all([electricity_promise, wifi_promise]).then(render);
