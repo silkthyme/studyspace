@@ -12,7 +12,6 @@ const electricity_promise = fetch(buildings)
   })
   .then((items) => {
     var numbuildings = items['Items'].length;
-    document.getElementById('numbuildings').innerHTML = numbuildings;
     for (i = 0; i < numbuildings; i++) {
       var attributelink = items['Items'][i]['Links']['Elements'];
       fetch(attributelink)
@@ -54,7 +53,7 @@ const electricity_promise = fetch(buildings)
             promises.push(promise);
           }
           Promise.all(promises).then(() => {
-            document.getElementById('electricity_data').innerHTML = electricity_data;
+            // document.getElementById('electricity_data').innerHTML = electricity_data;
           });
         })
     }
