@@ -10,13 +10,13 @@ fetch(arc_wifi_key)
   });
 
 fetch(arc_sq_ft_key)
-.then((response) => {
-  return response.json();
-})
-.then((myJson) => {
-  console.log(myJson['Value']);
-  document.getElementById('sqft').innerHTML = myJson['Value'];
-});
+  .then((response) => {
+    return response.json();
+  })
+  .then((myJson) => {
+    console.log(myJson['Value']);
+    document.getElementById('sqft').innerHTML = myJson['Value'];
+  });
 let electricity_data = '';
 
 var buildings = 'https://ucd-pi-iis.ou.ad3.ucdavis.edu/piwebapi/elements/F1EmbgZy4oKQ9kiBiZJTW7eugwvgV_Y00J5BGt6DwVwsURwwVVRJTC1BRlxDRUZTXFVDREFWSVNcQlVJTERJTkdT/elements';
@@ -27,7 +27,7 @@ fetch(buildings)
   .then((items) => {
     var numbuildings = items['Items'].length;
     document.getElementById('numbuildings').innerHTML = numbuildings;
-    for (i = 0; i < numbuildings; i++) { 
+    for (i = 0; i < numbuildings; i++) {
       var attributelink = items['Items'][i]['Links']['Elements'];
       fetch(attributelink)
         .then((response) => {
@@ -39,6 +39,7 @@ fetch(buildings)
           let name = '';
           let value = '';
           let units = '';
+          var promises = [];
           for (j = 0; j < items['Items'].length; j++) {
             let attribute = items['Items'][j]['Links']['Value'];
             // attributename is one of Chilled Water, Domestic Water, Electricity, Gas, or Steam
@@ -46,10 +47,10 @@ fetch(buildings)
             console.log(attributename);
             // we only care about each building's energy usage
             if (attributename !== 'Electricity') {
-              continue; 
+              continue;
             }
             // attribute is each attribute inside the Electricity object for each building
-            fetch(attribute)
+            var promise = fetch(attribute)
               .then((response) => {
                 return response.json();
               })
@@ -65,11 +66,14 @@ fetch(buildings)
                   console.log(name + ': ' + value + ' ' + units);
                   electricity_data += name + ': ' + value.toString() + ' ' + units + '<br>';
                 }
-              })
+              });
+            promises.push(promise);
           }
+          Promise.all(promises).then(() => {
+            document.getElementById('electricity_data').innerHTML = electricity_data;
+          });
         })
     }
   })
-  .then(() => {
-    document.getElementById('electricity_data').innerHTML = electricity_data;
-  });
+  // .then(() => {
+  // });
