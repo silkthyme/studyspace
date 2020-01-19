@@ -1,3 +1,5 @@
+
+
 body{
 	background-color: #f7f7f7;
 	font-family: 'Dosis', sans-serif;
@@ -16,7 +18,7 @@ h1{
 
 #header img{
 	position:relative;
-    -webkit-animation-duration: 14s;
+    -webkit-animation-duration: 20s;
      animation-name: transition;
     
 }
@@ -34,7 +36,8 @@ h1{
     90%  {bottom: 0px; top:0px;}
     95%  {bottom: -600px; top:-10px;}
     100% {left: 0px; top: 0px;}
-}
+  }
+
 
 a:link, a:visited {
 	color:white;
