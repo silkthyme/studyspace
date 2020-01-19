@@ -157,6 +157,7 @@ function render(modelArray) {
   const p_top_ten = document.getElementById('top-ten');
   const p_all_buildings = document.getElementById('all-buildings');
   const div_loader = document.getElementById('loader');
+  const go_to_top = document.getElementById('go-to-top');
 
   p_top_ten.style.visibility = 'visible';
   p_all_buildings.style.visibility = 'visible';
@@ -227,6 +228,7 @@ function render(modelArray) {
   }
 
   div_loader.style.visibility = 'hidden';
+  go_to_top.style.visibility = 'visible';
 }
 
 function newBuildingLi(building) {
