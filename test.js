@@ -26,7 +26,7 @@ fetch(buildings)
   .then((items) => {
     var numbuildings = items['Items'].length;
     document.getElementById('numbuildings').innerHTML = numbuildings;
-    for (i = 0; i < numbuildings; i++) { // CHANGE THIS TO NUMBUILDINGS LATER
+    for (i = 0; i < numbuildings; i++) { 
       var attributelink = items['Items'][i]['Links']['Elements'];
       fetch(attributelink)
         .then((response) => {
@@ -43,10 +43,11 @@ fetch(buildings)
             // attributename is one of Chilled Water, Domestic Water, Electricity, Gas, or Steam
             attributename = items['Items'][j]['Name'];
             console.log(attributename);
+            // we only care about each building's energy usage
             if (attributename !== 'Electricity') {
-              continue;
+              continue; 
             }
-            // attribute is each attribute inside Chilled Water, Domestic Water, Electricity, Gas or Steam
+            // attribute is each attribute inside the Electricity object for each building
             fetch(attribute)
               .then((response) => {
                 return response.json();
