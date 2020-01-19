@@ -24,6 +24,26 @@ fetch(buildings)
     return response.json();
   })
   .then((items) => {
-    console.log('There are ' + items['Items'].length + ' buildings with data.');
-    document.getElementById('numbuildings').innerHTML = items['Items'].length;
+    var numbuildings = items['Items'].length;
+    // console.log('There are ' + items['Items'].length + ' buildings with data.');
+    document.getElementById('numbuildings').innerHTML = numbuildings;
+    for (i = 0; i < numbuildings; i++) {
+      var attributelink = items['Items'][0]['Links']['Elements'];
+      fetch(attributelink)
+        .then((response) => {
+          return response.json();
+        })
+        .then((items) => {
+          console.log(items);
+        })
+      // console.log(elements);
+      // $.getJSON('a/ttributelink', function(buildingdata) {
+        // let items = buildingdata['Items'];
+      // });
+      // console.log(items);
+      // console.log(elements['Items']);
+      // for (i = 0; i < elements['Items'].length; i++) {
+      //   console.log('>>>>>' + elements['Items'][i]['Name']);
+      // }
+    }
   });
