@@ -5,7 +5,6 @@ fetch(arc_wifi_key)
     return response.json();
   })
   .then((myJson) => {
-    console.log(myJson['Value']);
     document.getElementById('output').innerHTML = myJson['Value'];
   });
 
@@ -14,7 +13,6 @@ fetch(arc_sq_ft_key)
     return response.json();
   })
   .then((myJson) => {
-    console.log(myJson['Value']);
     document.getElementById('sqft').innerHTML = myJson['Value'];
   });
 let electricity_data = '';
@@ -34,7 +32,7 @@ fetch(buildings)
           return response.json();
         })
         .then((items) => {
-          console.log(items);
+          // console.log(items);
           let attributename = '';
           let name = '';
           let value = '';
@@ -44,7 +42,7 @@ fetch(buildings)
             let attribute = items['Items'][j]['Links']['Value'];
             // attributename is one of Chilled Water, Domestic Water, Electricity, Gas, or Steam
             attributename = items['Items'][j]['Name'];
-            console.log(attributename);
+            // console.log(attributename);
             // we only care about each building's energy usage
             if (attributename !== 'Electricity') {
               continue;
@@ -63,7 +61,7 @@ fetch(buildings)
                     value = 'not set';
                   }
                   units = items['Items'][k]['Value']['UnitsAbbreviation'];
-                  console.log(name + ': ' + value + ' ' + units);
+                  // console.log(name + ': ' + value + ' ' + units);
                   electricity_data += name + ': ' + value.toString() + ' ' + units + '<br>';
                 }
               });
@@ -75,5 +73,38 @@ fetch(buildings)
         })
     }
   })
+  
+  var wifi_buildings = "https://ucd-pi-iis.ou.ad3.ucdavis.edu/piwebapi/elements/F1EmbgZy4oKQ9kiBiZJTW7eugwMLOlxFHu5hGUtUhRt5d2AAVVRJTC1BRlxBQ0VcVUMgREFWSVNcSUNTIEJVSUxESU5HUw/elements";
+  fetch(wifi_buildings)
+    .then((response) => {
+      return response.json();
+    })
+    .then((items) => {
+      for (i = 0; i < items['Items'].length; i++) {
+        fetch(items['Items'][i]['Links']['Attributes']) 
+          .then((response) => {
+            return response.json();
+          })
+          .then((items) => {
+            let object = '';
+            for (j = 0; j < items['Items'].length; j++) {
+              object = items['Items'][j];
+              if (object['Name'] === 'WIFI Occupants') {
+                fetch(object['Links']['Value']) 
+                  .then((response) => {
+                    return response.json();
+                  })
+                  .then((wifi_object) => {
+                    console.log('Number of WiFi devices connected: ' + wifi_object['Value']);
+                  })
+                break;
+              } else {
+                continue;
+              }
+            }
+            // console.log(items['Items']);
+          })
+      }
+    });
   // .then(() => {
   // });
