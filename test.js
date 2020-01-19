@@ -32,23 +32,21 @@ fetch(buildings)
           return response.json();
         })
         .then((items) => {
-          // console.log(items);
           let attributename = '';
           let name = '';
           let value = '';
           let units = '';
-          var promises = [];
+          let promises = [];
           for (j = 0; j < items['Items'].length; j++) {
             let attribute = items['Items'][j]['Links']['Value'];
             // attributename is one of Chilled Water, Domestic Water, Electricity, Gas, or Steam
             attributename = items['Items'][j]['Name'];
-            // console.log(attributename);
             // we only care about each building's energy usage
             if (attributename !== 'Electricity') {
               continue;
             }
             // attribute is each attribute inside the Electricity object for each building
-            var promise = fetch(attribute)
+            const promise = fetch(attribute)
               .then((response) => {
                 return response.json();
               })
@@ -61,7 +59,6 @@ fetch(buildings)
                     value = 'not set';
                   }
                   units = items['Items'][k]['Value']['UnitsAbbreviation'];
-                  // console.log(name + ': ' + value + ' ' + units);
                   electricity_data += name + ': ' + value.toString() + ' ' + units + '<br>';
                 }
               });
@@ -74,6 +71,8 @@ fetch(buildings)
     }
   })
   
+  let promise_count = 0;
+  let wifi_data = '';
   var wifi_buildings = "https://ucd-pi-iis.ou.ad3.ucdavis.edu/piwebapi/elements/F1EmbgZy4oKQ9kiBiZJTW7eugwMLOlxFHu5hGUtUhRt5d2AAVVRJTC1BRlxBQ0VcVUMgREFWSVNcSUNTIEJVSUxESU5HUw/elements";
   fetch(wifi_buildings)
     .then((response) => {
@@ -81,30 +80,41 @@ fetch(buildings)
     })
     .then((items) => {
       for (i = 0; i < items['Items'].length; i++) {
+        console.log('Building: ' + items['Items'][i]['Name']);
         fetch(items['Items'][i]['Links']['Attributes']) 
           .then((response) => {
             return response.json();
           })
           .then((items) => {
             let object = '';
+            let promises = [];
+
             for (j = 0; j < items['Items'].length; j++) {
               object = items['Items'][j];
               if (object['Name'] === 'WIFI Occupants') {
-                fetch(object['Links']['Value']) 
+                const promise = fetch(object['Links']['Value']) 
                   .then((response) => {
                     return response.json();
                   })
                   .then((wifi_object) => {
-                    console.log('Number of WiFi devices connected: ' + wifi_object['Value']);
-                  })
+                    promise_count++;
+                    console.log(`Promises resolved = ${promise_count}`);
+                    console.log('index: ' + j + ' -> ' + wifi_object['Value']);
+                    wifi_data += 'index: ' + promise_count + '. Number of devices connected in this building: ' + wifi_object['Value'] + '<br>';
+                  });
+                promises.push(promise);
                 break;
               } else {
                 continue;
               }
             }
-            // console.log(items['Items']);
-          })
+            Promise.all(promises).then(() => {
+              document.getElementById('wifi_data').innerHTML = wifi_data;
+            });
+          });
       }
+      // console.log(`Promises length = ${promises.length}`);
+
     });
   // .then(() => {
   // });
