@@ -17,6 +17,7 @@ fetch(arc_sq_ft_key)
   console.log(myJson['Value']);
   document.getElementById('sqft').innerHTML = myJson['Value'];
 });
+let electricity_data = '';
 
 var buildings = 'https://ucd-pi-iis.ou.ad3.ucdavis.edu/piwebapi/elements/F1EmbgZy4oKQ9kiBiZJTW7eugwvgV_Y00J5BGt6DwVwsURwwVVRJTC1BRlxDRUZTXFVDREFWSVNcQlVJTERJTkdT/elements';
 fetch(buildings)
@@ -58,13 +59,17 @@ fetch(buildings)
                   if (items['Items'][k]['Value']['Value'] != null) {
                     value = items['Items'][k]['Value']['Value'];
                   } else {
-                    value = 'undefined';
+                    value = 'not set';
                   }
-                    units = items['Items'][k]['Value']['UnitsAbbreviation'];
-                    console.log(name + ': ' + value + ' ' + units);
+                  units = items['Items'][k]['Value']['UnitsAbbreviation'];
+                  console.log(name + ': ' + value + ' ' + units);
+                  electricity_data += name + ': ' + value.toString() + ' ' + units + '<br>';
                 }
               })
           }
         })
     }
+  })
+  .then(() => {
+    document.getElementById('electricity_data').innerHTML = electricity_data;
   });
