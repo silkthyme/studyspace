@@ -132,6 +132,14 @@ a:hover, a:active {
 @keyframes loadingI {
     100% {transform: rotate(360deg);}
 }
+
+#go-to-top {
+    background-color: #ede8e4;
+}
+
+a:hover#go-to-top {
+    background-color: #10161c;
+}
 /* 
 ACAD
 There are 40 devices connected to the Wifi in ACAD
