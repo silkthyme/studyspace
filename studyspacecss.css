@@ -1,3 +1,83 @@
+
+
+body{
+	background-color: #f7f7f7;
+	font-family: 'Dosis', sans-serif;
+}
+
+
+h1{
+	color: white;
+
+}
+
+#header img:hover {
+    box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 1), 0 6px 16px 0 rgba(0, 0, 0, 1);
+   
+}
+
+#header img{
+	position:relative;
+    -webkit-animation-duration: 40s;
+     animation-name: transition;
+    
+}
+
+
+@-webkit-keyframes transition {
+
+    0%   {bottom: 600px; top: -500px;}
+    20% { bottom: -600px; top: 0px;}
+    30% { bottom: -600px; top: -50px;}
+    40%  {bottom: -600px; top:-100px;}
+    45%  { bottom: -600px; top: 0px;}
+    50%  {bottom: -600px; top:-40px;}
+    60%  {bottom: 0px; top:0px;}
+    70%  {bottom: -600px; top:-40px;}
+    80%  {bottom: 0px; top:0px;}
+    90%  {bottom: -600px; top:-20px;}
+    100% {left: 0px; top: 0px;}
+  }
+
+
+a:link, a:visited {
+	color:white;
+	background-color:#8AD5F0;
+	padding:15px 25px;
+	text-decoration: none;
+	text-align: center;
+	display:inline-block;
+}
+
+a:hover, a:active {
+	background-color:white;
+	color: #F5BBAE;
+}
+
+#header{
+	background-color:#8AD5F0;
+	padding: 1px;	
+	
+}
+
+#nav {
+	font-size:25px;
+}
+
+#wherenow{
+	padding-top:10px;
+	font-size:25px;
+	padding-left: 35%;
+}
+
+#nowwhat{
+	
+	font-size:35px;
+	
+}
+
+
+/* 
 ACAD
 There are 40 devices connected to the Wifi in ACAD
 
@@ -251,3 +331,4 @@ WSRC
 There are 0 devices connected to the Wifi in WSRC
 
 YOUNG
+*/
