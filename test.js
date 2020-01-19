@@ -124,23 +124,17 @@ const wifi_promise = fetch(wifi_buildings)
     }
     Promise.all(buildingPromises).then(() => {
       Promise.all(wifiOccupantPromises).then(() => {
-        console.log(model);
-        console.log('see above');
         render();
       })
     });
   });
 
 function render() {
-  console.log(model);
   const ul_list = document.getElementById('buildings-list');
-
-  console.log('this is inside the render function');
   for (const building in model) {
     ul_list.append(newBuildingLi(model[building]));
   }
   console.log(model);
-
 }
 
 function newBuildingLi(building) {
