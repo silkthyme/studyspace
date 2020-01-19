@@ -1,6 +1,6 @@
 # StudySpace
 
-[Check it out here!](https://silkthyme.github.io/studyspace/studyspace.html)
+[__Check it out here!__](https://silkthyme.github.io/studyspace/studyspace.html)
 
 ![Squiggly the Squid](https://github.com/silkthyme/studyspace/blob/master/krakenkid.png)
 
