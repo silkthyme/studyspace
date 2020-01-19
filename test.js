@@ -49,6 +49,7 @@ const electricity_promise = fetch(buildings)
               continue;
             }
             // attribute is each attribute inside the Electricity object for each building
+            // We want to add the Demand to the model map.
             const promise = fetch(attribute)
               .then((response) => {
                 return response.json();
@@ -84,6 +85,7 @@ const wifi_promise = fetch(wifi_buildings)
   .then((items) => {
     let buildingPromises = [];
     let wifiOccupantPromises = [];
+    let interpolatedPromises = [];
     for (i = 0; i < items['Items'].length; i++) {
       console.log('Building: ' + items['Items'][i]['Name']);
 
@@ -109,11 +111,34 @@ const wifi_promise = fetch(wifi_buildings)
                 .then((wifi_object) => {
                   promise_count++;
                   console.log(`Promises resolved = ${promise_count}`);
-                  console.log('index: ' + j + ' -> ' + wifi_object['Value']);
+                  console.log('wifi object: ' + j + '. ' + wifi_object['Value']);
                   wifi_data += 'index: ' + promise_count + '. Number of devices connected in this building: ' + wifi_object['Value'] + '<br>';
                   model[buildingObject.name][number_of_devices_key] = wifi_object['Value'];
                 });
               wifiOccupantPromises.push(wifiOccupantPromise);
+
+              // getting the interpolated data so that we can get the max number of wifi occupants in past
+              /*
+              Time interval: The past week, time intervals of 1 hour.
+              https://ucd-pi-iis.ou.ad3.ucdavis.edu/piwebapi/streams/F1AbEbgZy4oKQ9kiBiZJTW7eugwSTpv31Hu5hGUtUhRt5d2AAfUAWf7mHRFMQvB3Pt0VKPgVVRJTC1BRlxBQ0VcVUMgREFWSVNcSUNTIEJVSUxESU5HU1xBQ0FEfFdJRkkgT0NDVVBBTlRT/interpolated?starttime=2019&endtime=2020&interval=100h
+              */
+              const interpolatedPromise = fetch(object['Links']['InterpolatedData'] + '?starttime=-1w&endtime=Today&interval=1h')
+                .then((response) => {
+                  return response.json();
+                })
+                .then((interpolated_object) => {
+                  // Later, change the interpolated_object to iterate through all the objects in the Items and array and take the maximum
+                  if (interpolated_object['Items'] !== undefined) {
+                    console.log('interpolated data: ' + j + '. ' + interpolated_object['Items'][0]['Value']);
+                    const interpolated_array = interpolated_object['Items'].map((item) => {
+                      return item['Value'];
+                    });
+                    const maxValue = Math.max(...interpolated_array);
+                    console.log('max of ' + nameOfBuilding + ' is ' + maxValue);
+                    console.log('___________________________________');
+                  }
+                });
+              interpolatedPromises.push(interpolatedPromise);
               break;
             } else {
               continue;
@@ -124,7 +149,9 @@ const wifi_promise = fetch(wifi_buildings)
     }
     Promise.all(buildingPromises).then(() => {
       Promise.all(wifiOccupantPromises).then(() => {
-        render();
+        Promise.all(interpolatedPromises).then(() => {
+          render();
+        })
       })
     });
   });
