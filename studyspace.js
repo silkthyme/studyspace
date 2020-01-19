@@ -1,7 +1,9 @@
 let model = {};
+let building_images = {};
 var number_of_devices_key = 'number_of_connected_devices';
 var max_number_of_devices_key = 'max_number_of_devices_key';
 var ratio_key = 'ratio_key';
+const fallback_image = "https://theaggie.org/wp-content/uploads/2018/05/bracketed_op_Kaila_Mattera.jpg";
 
 let electricity_data = '';
 
@@ -118,7 +120,7 @@ const wifi_promise = fetch(wifi_buildings)
                       return item['Value'];
                     });
                     const maxValue = Math.max(...interpolated_array);
-                    
+
                     model[buildingObject.name][max_number_of_devices_key] = maxValue;
                     model[buildingObject.name][ratio_key] = buildingObject[number_of_devices_key] / maxValue;
 
@@ -137,13 +139,16 @@ const wifi_promise = fetch(wifi_buildings)
     }
     Promise.all(buildingPromises).then(() => {
       Promise.all(wifiOccupantPromises).then(() => {
-        Promise.all(interpolatedPromises).then(() => {
-          let modelArray = Object.values(model);
+        Promise.all(interpolatedPromises).then(
+          () => {
+            buildingImagesPromise.then(() => {
+              let modelArray = Object.values(model);
 
-          modelArray = modelArray.sort(compareBuildings);
-          console.log(modelArray);
-          render(modelArray);
-        })
+              modelArray = modelArray.sort(compareBuildings);
+              console.log(modelArray);
+              render(modelArray);
+            });
+          });
       })
     });
   });
@@ -165,14 +170,14 @@ function render(modelArray) {
   // const img = document.createElement('img');
   // img.src = 'https://localwiki.org/media/cache/8c/9a/8c9aff9e9e3f770d570c0302a52fb831.jpg';
 
-  let currentBuilding; 
+  let currentBuilding;
   for (i = 0; i < 10; i++) {
     currentBuilding = modelArray[i];
 
     const card_html = `
     <div class="ui card">
     <div class="image">
-      <img src="https://localwiki.org/media/cache/8c/9a/8c9aff9e9e3f770d570c0302a52fb831.jpg">
+      <img src="${building_images[currentBuilding.name] || fallback_image}">
     </div>
     <div class="content">
       <a class="header">${currentBuilding.name}</a>
@@ -192,10 +197,11 @@ function render(modelArray) {
   for (j = 10; j < modelArray.length; j++) {
     currentBuilding = modelArray[j];
 
+
     const card_html2 = `
     <div class="ui card">
     <div class="image">
-      <img src="https://localwiki.org/media/cache/8c/9a/8c9aff9e9e3f770d570c0302a52fb831.jpg">
+      <img src="${building_images[currentBuilding.name] || fallback_image}">
     </div>
     <div class="content">
       <a class="header">${currentBuilding.name}</a>
@@ -223,7 +229,7 @@ function newBuildingLi(building) {
   const li_wifi_devices = document.createElement('li');
   const li_max_num = document.createElement('li');
   const li_ratio = document.createElement('li');
-  
+
   li_wifi_devices.innerText = `There are ${building[number_of_devices_key]} devices connected to the Wifi in ${building.name}`;
   li_max_num.innerText = `Maximum number of WiFi devices connected in the last week: ${building[max_number_of_devices_key]}`;
   li_ratio.innerText = `Ratio of current number of connected devices to maximum in the past week: ${building[ratio_key]}`;
@@ -231,7 +237,7 @@ function newBuildingLi(building) {
   sub_ul.append(li_wifi_devices);
   sub_ul.append(li_max_num);
   sub_ul.append(li_ratio);
-  
+
   const div_building = document.createElement('div');
 
   div_building.append(header);
@@ -259,3 +265,14 @@ function compareBuildings(buildingA, buildingB) {
     }
   }
 }
+
+const building_images_url = 'building_images.json';
+
+const buildingImagesPromise = fetch(building_images_url)
+  .then((response) => {
+    return response.json();
+  })
+  .then((myJson) => {
+    console.log(myJson);
+    building_images = myJson;
+  });
