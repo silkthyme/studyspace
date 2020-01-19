@@ -11,7 +11,7 @@ h1{
 
 img{
 	position:relative;
-    -webkit-animation-duration: 7s;
+    -webkit-animation-duration: 4s;
      animation-name: transition;
     
 }
@@ -33,7 +33,7 @@ img{
 
 a:link, a:visited {
 	color:white;
-	background-color:#96C3C3;
+	background-color:#8AD5F0;
 	padding:15px 25px;
 	text-decoration: none;
 	text-align: center;
@@ -42,11 +42,11 @@ a:link, a:visited {
 
 a:hover, a:active {
 	background-color:white;
-	color: #96C3C3;
+	color: #F5BBAE;
 }
 
 #header{
-	background-color:#96C3C3;
+	background-color:#8AD5F0;
 	padding: 1px;	
 	
 }
@@ -60,12 +60,12 @@ a:hover, a:active {
 #wherenow{
 	padding-top:10px;
 	font-size:25px;
-	padding-left: 120px;
+	padding-left: 35%;
 }
 
-#delete{
+#nowwhat{
 	
-	font-size:55px;
-	padding-left: 120px;
+	font-size:35px;
+	
 }
 
