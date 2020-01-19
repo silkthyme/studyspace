@@ -18,3 +18,12 @@ fetch(arc_sq_ft_key)
   document.getElementById('sqft').innerHTML = myJson['Value'];
 });
 
+var buildings = 'https://ucd-pi-iis.ou.ad3.ucdavis.edu/piwebapi/elements/F1EmbgZy4oKQ9kiBiZJTW7eugwvgV_Y00J5BGt6DwVwsURwwVVRJTC1BRlxDRUZTXFVDREFWSVNcQlVJTERJTkdT/elements';
+fetch(buildings)
+  .then((response) => {
+    return response.json();
+  })
+  .then((items) => {
+    console.log('There are ' + items['Items'].length + ' buildings with data.');
+    document.getElementById('numbuildings').innerHTML = items['Items'].length;
+  });
