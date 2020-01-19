@@ -100,11 +100,11 @@ const wifi_promise = fetch(wifi_buildings)
         })
         .then((items) => {
           let object = '';
-          let promises = [];
+          let wifiOccupantPromises = [];
           for (j = 0; j < items['Items'].length; j++) {
             object = items['Items'][j];
             if (object['Name'] === 'WIFI Occupants') {
-              const promise = fetch(object['Links']['Value'])
+              const wifiOccupantPromise = fetch(object['Links']['Value'])
                 .then((response) => {
                   // model[buildingObject.name][number_of_devices_key] = 'before the first return';
                   return response.json();
@@ -120,22 +120,24 @@ const wifi_promise = fetch(wifi_buildings)
                   // model[buildingObject.name] = buildingObject;
                   // console.log('>>>>>>' + model[buildingObject.name][number_of_devices_key]);
                 });
-              promises.push(promise);
+              wifiOccupantPromises.push(wifiOccupantPromise);
               break;
             } else {
               continue;
             }
           }
-          Promise.all(promises).then(() => {
+          Promise.all(wifiOccupantPromises).then(() => {
             document.getElementById('wifi_data').innerHTML = wifi_data;
-            // render();
           });
         });
       buildingPromises.push(buildingPromise);
-    
     }
     Promise.all(buildingPromises).then(() => {
+      console.log(model);
+      console.log('see above');
       render();
+      // console.log('after render');
+      // console.log(model);
     });
     // console.log(`Promises length = ${promises.length}`);
   });
@@ -144,12 +146,16 @@ const wifi_promise = fetch(wifi_buildings)
 
 
 function render() {
+  console.log(model);
   const ul_list = document.getElementById('buildings-list');
-  for (building in model) {
-    // console.log(building);
+  
+  console.log('this is inside the render function');
+  for (const building in model) {
     console.log('>>>>>>' + [building][number_of_devices_key]);
-    ul_list.append(newBuildingLi(model[building]));
+    ul_list.append(newBuildingLi(building));
   }
+  console.log(model);
+
 }
 
 function newBuildingLi(building) {
@@ -157,7 +163,7 @@ function newBuildingLi(building) {
   const header = document.createElement('h3');
   header.innerText = building['name'];
   const paragraph = document.createElement('p');
-  paragraph.innerText = `There are ${building[number_of_devices_key]} devices connected to the Wifi in ${building.name}`;
+  paragraph.innerText = `There are ${building[number_of_devices_key]} devices conne cted to the Wifi in ${building.name}`;
   li_item.append(header);
   li_item.append(paragraph);
   return li_item;
