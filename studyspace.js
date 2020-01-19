@@ -142,7 +142,7 @@ const wifi_promise = fetch(wifi_buildings)
 
           modelArray = modelArray.sort(compareBuildings);
           console.log(modelArray);
-          render(modelArray.slice(0, 10));
+          render(modelArray);
         })
       })
     });
