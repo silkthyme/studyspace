@@ -28,6 +28,7 @@ fetch(buildings)
     // console.log('There are ' + items['Items'].length + ' buildings with data.');
     document.getElementById('numbuildings').innerHTML = numbuildings;
     for (i = 0; i < numbuildings; i++) {
+      //TODO: change the 0 to i later!!!!!
       var attributelink = items['Items'][0]['Links']['Elements'];
       fetch(attributelink)
         .then((response) => {
@@ -35,6 +36,20 @@ fetch(buildings)
         })
         .then((items) => {
           console.log(items);
+          // let chilledwater = items['Items'][0]['Name'];
+          // let domesticwater = items['Items'][1]['Name'];
+          let electricity = items['Items'][2]['Links']['Value'];
+          // let gas = items['Items'][3]['Name'];
+          // let steam = items['Items'][4]['Name'];
+          fetch(electricity)
+            .then((response) => {
+              return response.json();
+            })
+            .then((items) => {
+              let value = items['Items'][2]['Value'];
+              console.log(value);
+              // let timestamp
+            })
         })
       // console.log(elements);
       // $.getJSON('a/ttributelink', function(buildingdata) {
