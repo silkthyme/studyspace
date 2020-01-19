@@ -37,8 +37,8 @@ h1{
 
 
 a:link, a:visited {
-	color:white;
-	background-color:#10161c;
+	color: #711919;
+	/* background-color:#10161c; */
 	padding:5px 5px;
 	text-decoration: none;
 	text-align: center;
@@ -47,8 +47,9 @@ a:link, a:visited {
 	width: 20%;
 }
 a:hover, a:active {
-	background-color: #ede8e4;
-	color: #711919;
+	background-color:#10161c;
+	/* background-color: #ede8e4; */
+	color:white;
 }
 
 #header{
@@ -140,258 +141,12 @@ a:hover, a:active {
 a:hover#go-to-top {
     background-color: #10161c;
 }
-/* 
-ACAD
-There are 40 devices connected to the Wifi in ACAD
 
-AOB4
-There are 7 devices connected to the Wifi in AOB4
-
-ARC
-There are 9 devices connected to the Wifi in ARC
-
-ASMUN
-There are 1 devices connected to the Wifi in ASMUN
-
-BJ1
-There are 1 devices connected to the Wifi in BJ1
-
-BRIG
-There are 22 devices connected to the Wifi in BRIG
-
-BWFP
-There are 0 devices connected to the Wifi in BWFP
-
-CHEM
-There are 15 devices connected to the Wifi in CHEM
-
-CHEMX
-There are 21 devices connected to the Wifi in CHEMX
-
-COLEB
-There are 0 devices connected to the Wifi in COLEB
-
-CONT
-There are 0 devices connected to the Wifi in CONT
-
-COWL
-There are 6 devices connected to the Wifi in COWL
-
-CRUS
-There are 12 devices connected to the Wifi in CRUS
-
-DH
-There are 8 devices connected to the Wifi in DH
-
-DRAMA
-There are 4 devices connected to the Wifi in DRAMA
-
-EPS
-There are 0 devices connected to the Wifi in EPS
-
-EU2
-There are 38 devices connected to the Wifi in EU2
-
-FOOD
-There are 1 devices connected to the Wifi in FOOD
-
-FOODSCI
-There are 1 devices connected to the Wifi in FOODSCI
-
-FPS
-There are 0 devices connected to the Wifi in FPS
-
-GBSF
-There are 63 devices connected to the Wifi in GBSF
-
-GHA_ICS
-There are 17 devices connected to the Wifi in GHA_ICS
-
-GIEDT
-There are 0 devices connected to the Wifi in GIEDT
-
-HART
-There are 19 devices connected to the Wifi in HART
-
-HR
-There are 0 devices connected to the Wifi in HR
-
-HUNT
-There are 4 devices connected to the Wifi in HUNT
-
-HUTCH
-There are 11 devices connected to the Wifi in HUTCH
-
-HWC
-There are 24 devices connected to the Wifi in HWC
-
-JUNGER
-There are 0 devices connected to the Wifi in JUNGER
-
-KERR
-There are 12 devices connected to the Wifi in KERR
-
-KING
-There are 5 devices connected to the Wifi in KING
-
-KLEIBER
-There are 0 devices connected to the Wifi in KLEIBER
-
-LFH
-There are 4 devices connected to the Wifi in LFH
-
-LSA
-There are 11 devices connected to the Wifi in LSA
-
-MADDY
-There are 0 devices connected to the Wifi in MADDY
-
-MANN
-There are 1 devices connected to the Wifi in MANN
-
-MATH
-There are 5 devices connected to the Wifi in MATH
-
-MEYR
-There are 23 devices connected to the Wifi in MEYR
-
-MIWF
-There are 8 devices connected to the Wifi in MIWF
-
-MRAK
-There are 18 devices connected to the Wifi in MRAK
-
-MSB
-There are 0 devices connected to the Wifi in MSB
-
-MSC
-There are 0 devices connected to the Wifi in MSC
-
-MU
-There are 24 devices connected to the Wifi in MU
-
-MUBS
-There are 24 devices connected to the Wifi in MUBS
-
-MUSIC
-There are 2 devices connected to the Wifi in MUSIC
-
-OLS
-There are 2 devices connected to the Wifi in OLS
-
-PES
-There are 8 devices connected to the Wifi in PES
-
-PH_GEO
-There are 20 devices connected to the Wifi in PH_GEO
-
-PHSL
-There are 0 devices connected to the Wifi in PHSL
-
-PRB
-There are 3 devices connected to the Wifi in PRB
-
-RECH
-There are 0 devices connected to the Wifi in RECH
-
-REGN
-There are 0 devices connected to the Wifi in REGN
-
-ROBN
-There are 7 devices connected to the Wifi in ROBN
-
-ROBS
-There are 7 devices connected to the Wifi in ROBS
-
-ROES
-There are 0 devices connected to the Wifi in ROES
-
-SCC
-There are 7 devices connected to the Wifi in SCC
-
-SCHM
-There are 0 devices connected to the Wifi in SCHM
-
-SEGU
-There are 0 devices connected to the Wifi in SEGU
-
-SHIELDS
-There are 9 devices connected to the Wifi in SHIELDS
-
-SLAB
-There are 11 devices connected to the Wifi in SLAB
-
-SLEC
-There are 0 devices connected to the Wifi in SLEC
-
-SMOA
-There are 9 devices connected to the Wifi in SMOA
-
-SOCS
-There are 31 devices connected to the Wifi in SOCS
-
-SPRL
-There are 7 devices connected to the Wifi in SPRL
-
-SSC
-There are 5 devices connected to the Wifi in SSC
-
-STOR
-There are 2 devices connected to the Wifi in STOR
-
-STORER
-There are 2 devices connected to the Wifi in STORER
-
-SUR3
-There are 6 devices connected to the Wifi in SUR3
-
-TAPS
-There are 9 devices connected to the Wifi in TAPS
-
-TER1
-There are 0 devices connected to the Wifi in TER1
-
-TER2
-There are 0 devices connected to the Wifi in TER2
-
-TERC
-There are 0 devices connected to the Wifi in TERC
-
-THUR
-There are 1 devices connected to the Wifi in THUR
-
-TUPP
-There are 58 devices connected to the Wifi in TUPP
-
-VM2
-There are 13 devices connected to the Wifi in VM2
-
-VM3A
-There are 7 devices connected to the Wifi in VM3A
-
-VM3B
-There are 24 devices connected to the Wifi in VM3B
-
-VMEP
-There are 1 devices connected to the Wifi in VMEP
-
-VMIF
-There are 1 devices connected to the Wifi in VMIF
-
-VMLF
-There are 1 devices connected to the Wifi in VMLF
-
-VMTH
-There are 1 devices connected to the Wifi in VMTH
-
-WELL
-There are 1 devices connected to the Wifi in WELL
-
-WICK
-There are 15 devices connected to the Wifi in WICK
-
-WSRC
-There are 0 devices connected to the Wifi in WSRC
-
-YOUNG
-*/
+#title-anchor {
+    color: white;
+}
+
+a:hover#title-anchor {
+    color: #711919;
+    background-color: #ede8e4;
+}
