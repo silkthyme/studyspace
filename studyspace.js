@@ -154,6 +154,14 @@ const wifi_promise = fetch(wifi_buildings)
   });
 
 function render(modelArray) {
+  const p_top_ten = document.getElementById('top-ten');
+  const p_all_buildings = document.getElementById('all-buildings');
+  const div_loader = document.getElementById('loader');
+
+  p_top_ten.style.visibility = 'visible';
+  p_all_buildings.style.visibility = 'visible';
+
+
   // const ul_list = document.getElementById('buildings-list');
   // for (const building in model) {
   //   ul_list.append(newBuildingLi(model[building]));
@@ -218,6 +226,7 @@ function render(modelArray) {
     other_cards.append(first_li2);
   }
 
+  div_loader.style.visibility = 'hidden';
 }
 
 function newBuildingLi(building) {
