@@ -37,7 +37,7 @@ h1{
 
 a:link, a:visited {
 	color:white;
-	background-color:#8AD5F0;
+	background-color:#10161c;
 	padding:5px 5px;
 	text-decoration: none;
 	text-align: center;
@@ -51,7 +51,7 @@ a:hover, a:active {
 }
 
 #header{
-	background-color:#8AD5F0;
+	background-color:#10161c;
 	padding: 1px;	
 	
 }
