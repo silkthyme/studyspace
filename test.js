@@ -1,5 +1,7 @@
 let model = {};
 var number_of_devices_key = 'number_of_connected_devices';
+var max_number_of_devices_key = 'max_number_of_devices_key';
+var ratio_key = 'ratio_key';
 
 var arc_wifi_key = 'https://ucd-pi-iis.ou.ad3.ucdavis.edu/piwebapi/streams/F1AbEbgZy4oKQ9kiBiZJTW7eugw1d09nFPu5hGUtUhRt5d2AA4adEPLuHRFMQvB3Pt0VKPgVVRJTC1BRlxBQ0VcVUMgREFWSVNcSUNTIEJVSUxESU5HU1xBUkN8V0lGSSBPQ0NVUEFOVFM/value';
 var arc_sq_ft_key = 'https://ucd-pi-iis.ou.ad3.ucdavis.edu/piwebapi/streams/F1AbEbgZy4oKQ9kiBiZJTW7eugwr1rAt6dQ5BG4fRgDcyrprwmFWwiEf1tVQseNk58UYmagVVRJTC1BRlxDRUZTXFVDREFWSVNcQlVJTERJTkdTXEFDVElWSVRJRVMgQU5EIFJFQ1JFQVRJT04gQ0VOVEVSXFNURUFNfFRPVEFMIE1BSU5UQUlORUQgR1JPU1MgU1EuIEZULg/value';
@@ -134,6 +136,10 @@ const wifi_promise = fetch(wifi_buildings)
                       return item['Value'];
                     });
                     const maxValue = Math.max(...interpolated_array);
+                    
+                    model[buildingObject.name][max_number_of_devices_key] = maxValue;
+                    model[buildingObject.name][ratio_key] = buildingObject.number_of_devices_key / maxValue;
+
                     console.log('max of ' + nameOfBuilding + ' is ' + maxValue);
                     console.log('___________________________________');
                   }
@@ -165,12 +171,31 @@ function render() {
 }
 
 function newBuildingLi(building) {
-  const li_item = document.createElement('li');
+  // const li_item = document.createElement('li');
   const header = document.createElement('h3');
   header.innerText = building['name'];
-  const paragraph = document.createElement('p');
-  paragraph.innerText = `There are ${building[number_of_devices_key]} devices connected to the Wifi in ${building.name}`;
-  li_item.append(header);
-  li_item.append(paragraph);
-  return li_item;
+
+  const sub_ul = document.createElement('ul');
+
+  const li_wifi_devices = document.createElement('li');
+  const li_max_num = document.createElement('li');
+  const li_ratio = document.createElement('li');
+  
+  li_wifi_devices.innerText = `There are ${building[number_of_devices_key]} devices connected to the Wifi in ${building.name}`;
+  li_max_num.innerText = `Maximum number of WiFi devices connected in the last week: ${building[max_number_of_devices_key]}`;
+  li_ratio.innerText = `Ratio of current number of connected devices to maximum in the past week: ${building[ratio_key]}`;
+
+  sub_ul.append(li_wifi_devices);
+  sub_ul.append(li_max_num);
+  sub_ul.append(li_ratio);
+  
+  const div_building = document.createElement('div');
+
+  div_building.append(header);
+  div_building.append(sub_ul);
+  // const paragraph = document.createElement('p');
+  // paragraph.innerText = `There are ${building[number_of_devices_key]} devices connected to the Wifi in ${building.name}`;
+  // li_item.append(header);
+  // li_item.append(paragraph);
+  return div_building;
 }
