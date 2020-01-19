@@ -137,7 +137,6 @@ function render() {
 
   console.log('this is inside the render function');
   for (const building in model) {
-    console.log('>>>>>>' + [building][number_of_devices_key]);
     ul_list.append(newBuildingLi(model[building]));
   }
   console.log(model);
