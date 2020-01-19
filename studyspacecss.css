@@ -11,10 +11,6 @@ h1{
 
 }
 
-#header img:hover {
-    box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 1), 0 6px 16px 0 rgba(0, 0, 0, 1);
-   
-}
 
 #header img{
 	position:relative;
