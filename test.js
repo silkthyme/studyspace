@@ -22,7 +22,7 @@ fetch(arc_sq_ft_key)
 let electricity_data = '';
 
 var buildings = 'https://ucd-pi-iis.ou.ad3.ucdavis.edu/piwebapi/elements/F1EmbgZy4oKQ9kiBiZJTW7eugwvgV_Y00J5BGt6DwVwsURwwVVRJTC1BRlxDRUZTXFVDREFWSVNcQlVJTERJTkdT/elements';
-fetch(buildings)
+const electricity_promise = fetch(buildings)
   .then((response) => {
     return response.json();
   })
@@ -78,7 +78,7 @@ fetch(buildings)
 let promise_count = 0;
 let wifi_data = '';
 var wifi_buildings = "https://ucd-pi-iis.ou.ad3.ucdavis.edu/piwebapi/elements/F1EmbgZy4oKQ9kiBiZJTW7eugwMLOlxFHu5hGUtUhRt5d2AAVVRJTC1BRlxBQ0VcVUMgREFWSVNcSUNTIEJVSUxESU5HUw/elements";
-fetch(wifi_buildings)
+const wifi_promise = fetch(wifi_buildings)
   .then((response) => {
     return response.json();
   })
@@ -129,7 +129,29 @@ fetch(wifi_buildings)
         });
     }
     // console.log(`Promises length = ${promises.length}`);
-
   });
-  // .then(() => {
-  // });
+// .then(() => {
+// });
+
+
+function render() {
+  const ul_list = document.getElementById('buildings-list');
+  for (building in model) {
+    console.log(building);
+    ul_list.append(newBuildingLi(model[building]));
+  }
+}
+
+function newBuildingLi(building) {
+  const li_item = document.createElement('li');
+  const header = document.createElement('h3');
+  header.innerText = building['name'];
+  const paragraph = document.createElement('p');
+  paragraph.innerText = `There are ${building[number_of_devices_key]} devices connected to the Wifi in ${building.name}`;
+
+  li_item.append(header);
+  li_item.append(paragraph);
+  return li_item;
+}
+
+Promise.all([electricity_promise, wifi_promise]).then(render);
