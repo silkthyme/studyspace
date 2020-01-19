@@ -2,6 +2,7 @@ let model = {};
 let building_images = {};
 var number_of_devices_key = 'number_of_connected_devices';
 var max_number_of_devices_key = 'max_number_of_devices_key';
+var timestamp_key = 'timestamp_key';
 var ratio_key = 'ratio_key';
 const fallback_image = "https://theaggie.org/wp-content/uploads/2018/05/bracketed_op_Kaila_Mattera.jpg";
 
@@ -98,8 +99,10 @@ const wifi_promise = fetch(wifi_buildings)
                   promise_count++;
                   console.log(`Promises resolved = ${promise_count}`);
                   console.log('wifi object: ' + j + '. ' + wifi_object['Value']);
+                  console.log('Last Updated: ' + j + '. ' + new Date(wifi_object['Timestamp']));
                   wifi_data += 'index: ' + promise_count + '. Number of devices connected in this building: ' + wifi_object['Value'] + '<br>';
                   model[buildingObject.name][number_of_devices_key] = wifi_object['Value'];
+                  model[buildingObject.name][timestamp_key] = new Date(wifi_object['Timestamp']).toLocaleString();
                 });
               wifiOccupantPromises.push(wifiOccupantPromise);
 
@@ -195,13 +198,17 @@ function render(modelArray) {
     </div>
           <div style="width: 500px" class="content">
             <h5 class="header">${currentBuilding.name}</h5>
-            <div class="description">
+            <div style="text-align: left" class="description">
               There are ${currentBuilding[number_of_devices_key]} devices connected to the Wifi in ${currentBuilding.name}
               . Maximum number of WiFi devices connected in the last week: ${currentBuilding[max_number_of_devices_key]}
             </div>
-            <div class="meta">
-              <span style="font-size: 15px; padding: 0px; line-height: 80%" class="date">Estimated Occupancy: ${ratio_string}</span>
+            <div class="description">
+              <span style="font-size: 15px; padding: 0px; line-height: 80%; opacity: 80%" class="date">Estimated Occupancy: ${ratio_string}</span>
             </div>
+            <div style="font-size: 15px; text-align: center; opacity: 80%" class="meta">
+            Last Updated: ${currentBuilding[timestamp_key]}
+            </div>
+            
             `;
   }
 
